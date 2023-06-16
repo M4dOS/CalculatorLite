@@ -249,7 +249,8 @@ namespace CalculatorLite
         }
         private void Num0_Click(object sender, EventArgs e)
         {
-            if (Value.Text != "0" || CurrStatus != Status.Nothing) Value.Text += "0";
+            if (Value.Text != "0" || CurrStatus != Status.Nothing) Value.Text = "0";
+            else Value.Text += "0";
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
@@ -310,7 +311,7 @@ namespace CalculatorLite
             Value.Clear();
             Value.Text = "0";
         }
-        private void ClearAll_Click(object sender, EventArgs e)//reset all
+        private void ClearAll_Click(object sender, EventArgs e)
         {
             Value.Clear();
             Value.Text = "0";
@@ -339,7 +340,7 @@ namespace CalculatorLite
                 }
                 else e.Handled = true;
             }
-        }//запрет на ввод букв(только цифры и знаки)
+        }
         #endregion
 
         #region Калькулятор
@@ -347,7 +348,7 @@ namespace CalculatorLite
         {
             try
             {
-                if (preserve == null) preserve = double.Parse(Value.Text); ;
+                if (preserve == null) preserve = double.Parse(Value.Text);
                 /*else preserve = double.Parse(Value.Text);*/
                 switch (CurrentState)
                 {

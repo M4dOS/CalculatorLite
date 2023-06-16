@@ -157,7 +157,7 @@
             // Clear
             // 
             this.Clear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Clear.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Clear.ForeColor = System.Drawing.Color.DarkOrange;
             this.Clear.Location = new System.Drawing.Point(170, 118);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(34, 28);
@@ -169,7 +169,7 @@
             // ClearAll
             // 
             this.ClearAll.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClearAll.ForeColor = System.Drawing.Color.ForestGreen;
+            this.ClearAll.ForeColor = System.Drawing.Color.OrangeRed;
             this.ClearAll.Location = new System.Drawing.Point(170, 150);
             this.ClearAll.Name = "ClearAll";
             this.ClearAll.Size = new System.Drawing.Size(34, 28);
@@ -181,7 +181,7 @@
             // Backspace
             // 
             this.Backspace.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
-            this.Backspace.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Backspace.ForeColor = System.Drawing.Color.DarkGoldenrod;
             this.Backspace.Location = new System.Drawing.Point(170, 84);
             this.Backspace.Name = "Backspace";
             this.Backspace.Size = new System.Drawing.Size(34, 28);
@@ -434,7 +434,7 @@
             // 
             this.MemoryClear.Enabled = false;
             this.MemoryClear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MemoryClear.ForeColor = System.Drawing.Color.ForestGreen;
+            this.MemoryClear.ForeColor = System.Drawing.Color.DarkOrange;
             this.MemoryClear.Location = new System.Drawing.Point(7, 84);
             this.MemoryClear.Name = "MemoryClear";
             this.MemoryClear.Size = new System.Drawing.Size(34, 28);
@@ -496,6 +496,7 @@
             this.Pow.TabIndex = 32;
             this.Pow.Text = "xⁿ";
             this.Pow.UseVisualStyleBackColor = true;
+            this.Pow.Click += new System.EventHandler(this.Pow_Click);
             // 
             // panel1
             // 
@@ -538,6 +539,7 @@
             this.RootN.TabIndex = 35;
             this.RootN.Text = "ⁿ√x";
             this.RootN.UseVisualStyleBackColor = true;
+            this.RootN.Click += new System.EventHandler(this.RootN_Click);
             // 
             // Form1
             // 

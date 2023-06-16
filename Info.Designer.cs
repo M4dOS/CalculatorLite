@@ -46,6 +46,7 @@ namespace CalculatorLite
             // 
             this.Head1.AutoSize = true;
             this.Head1.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Head1.ForeColor = System.Drawing.Color.ForestGreen;
             this.Head1.Location = new System.Drawing.Point(12, 9);
             this.Head1.Name = "Head1";
             this.Head1.Size = new System.Drawing.Size(485, 37);
@@ -55,6 +56,7 @@ namespace CalculatorLite
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(108, 57);
             this.label1.Name = "label1";
@@ -69,6 +71,7 @@ namespace CalculatorLite
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Cross;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(19, 49);
             this.pictureBox1.Name = "pictureBox1";
@@ -84,7 +87,7 @@ namespace CalculatorLite
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.label2.Location = new System.Drawing.Point(178, 147);
+            this.label2.Location = new System.Drawing.Point(238, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 2;
@@ -93,8 +96,9 @@ namespace CalculatorLite
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.linkLabel1.Location = new System.Drawing.Point(244, 160);
+            this.linkLabel1.Location = new System.Drawing.Point(304, 146);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(43, 13);
             this.linkLabel1.TabIndex = 3;
@@ -104,8 +108,9 @@ namespace CalculatorLite
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel3.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.linkLabel3.Location = new System.Drawing.Point(178, 160);
+            this.linkLabel3.Location = new System.Drawing.Point(238, 146);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(55, 13);
             this.linkLabel3.TabIndex = 5;
