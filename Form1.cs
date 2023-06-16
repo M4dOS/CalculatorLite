@@ -12,13 +12,13 @@ namespace CalculatorLite
 {
     public partial class Form1 : Form
     {
-        #region Переменные
+        #region Установки
         State CurrentState;//текущий статус 
         Status CurrStatus;
-        double? memory;//память
-
-        double answer;//хранение значения
         double? preserve;//хранение "модификаторов"
+        double? memory;//память
+        double? answer;//хранение значения
+        
         enum State
         {
             NoState = -1,
@@ -45,7 +45,7 @@ namespace CalculatorLite
             InitializeComponent();
             memory = null;
             preserve = null;
-            answer = 0;
+            answer = null;
             Value.Text = "0";
             Value.SelectionStart = Value.Text.Length;
             CurrentState = State.NoState;
@@ -53,7 +53,6 @@ namespace CalculatorLite
             Вставить.Enabled = Clipboard.GetText() != "";
             КопироватьПамять.Enabled = memory != null; 
             КопироватьПоле.Enabled = Value.Text != string.Empty;
-            this.KeyDown += Form1_KeyDown;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -107,10 +106,10 @@ namespace CalculatorLite
                     MemMinus_Click(sender, e);break;
                 case Keys.Oemplus:
                     MemPlus_Click(sender, e);break;
-                case Keys.Back:
-                    Backspace_Click(sender, e);break;
-                case Keys.Delete:
-                    ClearAll_Click(sender, e); break;
+                /*case Keys.Back:
+                    Backspace_Click(sender, e);break;*/
+                /*case Keys.Delete:
+                    ClearAll_Click(sender, e); break;*/
 
             }
         }
@@ -263,6 +262,15 @@ namespace CalculatorLite
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
+        private void PlusMinus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Value.Text.Contains("-")) Value.Text = Value.Text.Replace("-", string.Empty);
+                else Value.Text = "-" + Value.Text;
+            }
+            catch (Exception) { }
+        }
         #endregion
 
         #region Верхняя панель
@@ -308,8 +316,8 @@ namespace CalculatorLite
             Value.Text = "0";
             CurrentState = State.NoState;
             CurrStatus = Status.Nothing;
-            answer = 0;
-            preserve = 0;
+            answer = null;
+            preserve = null;
         }
         private void Backspace_Click(object sender, EventArgs e)
         {
@@ -339,95 +347,55 @@ namespace CalculatorLite
         {
             try
             {
-                if (CurrentState == State.Divide)
+                if (preserve == null) preserve = double.Parse(Value.Text); ;
+                /*else preserve = double.Parse(Value.Text);*/
+                switch (CurrentState)
                 {
-                    if (preserve != null) answer = (double)preserve;
-                    preserve = double.Parse(Value.Text);
-                    answer /= (double)preserve;
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
+                    case State.NoState:
+                        CurrStatus = Status.Nothing;
+                        break;
+
+                    case State.Substraction:
+                        answer -= (double)preserve;
+                        break;
+                    case State.Addition:
+                        answer += (double)preserve;
+                        break;
+                    case State.Multiplication:
+                        answer *= (double)preserve;
+                        break;
+                    case State.Divide:
+                        answer /= (double)preserve;
+                        break;
+                    case State.Power:
+                        answer = Math.Pow((double)answer, (double)preserve);
+                        break;
+                    case State.Squart:
+                        answer = Math.Sqrt((double)answer);
+                        break;
+                    case State.Square:
+                        answer = Math.Pow((double)answer, 2);
+                        break;
+                    case State.Inverse:
+                        answer = 1 / answer;
+                        break;
+                    case State.RootN:
+                        answer = Math.Pow((double)answer, 1.0 / (double)preserve);
+                        break;
                 }
-                else if (CurrentState == State.Multiplication)
-                {
-                    if (preserve != null) answer = (double)preserve;
-                    preserve = double.Parse(Value.Text);
-                    answer *= (double)preserve;
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else if (CurrentState == State.Substraction)
-                {
-                    if (preserve != null) answer = (double)preserve;
-                    preserve = double.Parse(Value.Text);
-                    answer -= (double)preserve;
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else if (CurrentState == State.Addition)
-                {
-                    if(preserve != null) answer = (double)preserve;
-                    preserve = double.Parse(Value.Text);
-                    answer += (double)preserve;
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else if (CurrentState == State.Power)
-                {
-                    if (preserve != null) answer = (double)preserve;
-                    preserve = double.Parse(Value.Text);
-                    answer = Math.Pow(answer, (double)preserve);
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else if (CurrentState == State.Squart)
-                {
-                    if (preserve != null) answer = (double)preserve;
-                    /*preserve = double.Parse(Value.Text);*/
-                    answer = Math.Sqrt(answer);
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else if (CurrentState == State.Square)
-                {
-                    if (preserve != null) answer = (double)preserve;
-                    /*preserve = double.Parse(Value.Text);*/
-                    answer = Math.Pow(answer, 2);
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else if (CurrentState == State.Inverse)
-                {
-                    if (preserve != null) answer = (double)preserve;
-                    /*preserve = double.Parse(Value.Text);*/
-                    answer = 1 / answer;
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else if (CurrentState == State.RootN)
-                {
-                    if (preserve != null) answer = (double)preserve;
-                    preserve = double.Parse(Value.Text);
-                    answer = Math.Pow(answer, 1/(double)preserve);
-                    Value.Text = answer.ToString();
-                    CurrStatus = Status.ReturnedAnswer;
-                }
-                else
-                {
-                    CurrStatus = Status.Nothing;
-                }
+                Value.Text = answer.ToString();
+                CurrStatus = Status.ReturnedAnswer;
+                /*CurrentState = State.NoState;*/
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Try input incorrect data");
-            }
+            catch (Exception ex) { MessageBox.Show("Вызвана следующая ошибка\n" + ex.Message, "Критическая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void Multiplication_Click(object sender, EventArgs e)
         {
-            if(CurrentState != State.NoState) Equally_Click(sender, e);
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Multiplication;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
@@ -436,9 +404,9 @@ namespace CalculatorLite
         private void Subtraction_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Substraction;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
@@ -447,9 +415,9 @@ namespace CalculatorLite
         private void Divide_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Divide;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
@@ -458,20 +426,20 @@ namespace CalculatorLite
         private void Addition_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Addition;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
-        private void Squart_Click(object sender, EventArgs e)//извлечение квадратного корня
+        private void Squart_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Squart;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
@@ -480,9 +448,9 @@ namespace CalculatorLite
         private void Inverse_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Inverse;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
@@ -491,31 +459,20 @@ namespace CalculatorLite
         private void Square_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Square;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
-
-        private void PlusMinus_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(Value.Text.Contains("-")) Value.Text = Value.Text.Replace("-", string.Empty);
-                else Value.Text = "-" + Value.Text;
-            }
-            catch (Exception) { }
-        }
-
         private void Pow_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.Power;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
@@ -524,15 +481,14 @@ namespace CalculatorLite
         private void RootN_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
+            if (answer == null) answer = double.Parse(Value.Text);
 
             CurrentState = State.RootN;
-            preserve = double.Parse(Value.Text);
             CurrStatus = Status.HavePreserve;
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
-
         #endregion
 
         private void panel1_Paint(object sender, PaintEventArgs e) { }

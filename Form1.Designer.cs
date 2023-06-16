@@ -102,7 +102,7 @@
             this.КопироватьПамять,
             this.КопироватьПоле});
             this.КопироватьSelect.Name = "КопироватьSelect";
-            this.КопироватьSelect.Size = new System.Drawing.Size(180, 22);
+            this.КопироватьSelect.Size = new System.Drawing.Size(144, 22);
             this.КопироватьSelect.Text = "Копировать";
             // 
             // КопироватьПамять
@@ -122,7 +122,7 @@
             // Вставить
             // 
             this.Вставить.Name = "Вставить";
-            this.Вставить.Size = new System.Drawing.Size(180, 22);
+            this.Вставить.Size = new System.Drawing.Size(144, 22);
             this.Вставить.Text = "Вставить";
             this.Вставить.Click += new System.EventHandler(this.Вставить_Click);
             // 
@@ -138,7 +138,7 @@
             // Инфа
             // 
             this.Инфа.Name = "Инфа";
-            this.Инфа.Size = new System.Drawing.Size(180, 22);
+            this.Инфа.Size = new System.Drawing.Size(151, 22);
             this.Инфа.Text = "О программе";
             this.Инфа.Click += new System.EventHandler(this.Инфа_Click);
             // 
@@ -147,7 +147,7 @@
             this.Value.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.Value.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Value.Location = new System.Drawing.Point(8, 58);
-            this.Value.MaxLength = 32;
+            this.Value.MaxLength = 256;
             this.Value.Name = "Value";
             this.Value.Size = new System.Drawing.Size(196, 20);
             this.Value.TabIndex = 1;
