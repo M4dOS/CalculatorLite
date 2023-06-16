@@ -294,43 +294,6 @@ namespace CalculatorLite
                 Application.OpenForms["Info"].Activate();
             }
         }
-
-        private void Светлота_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Темнота_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Система_Click(Object sender, EventArgs e)
-        {
-            bool isDarkTheme = false;
-
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", false);
-
-            if (key != null)
-            {
-                object value = key.GetValue("SystemUsesLightTheme");
-
-                if (value != null && value.ToString() == "0")
-                {
-                    isDarkTheme = true;
-                }
-
-                key.Close();
-            }
-
-            if (isDarkTheme)
-            {
-                Темнота_Click(sender, e);
-            }
-            else
-            {
-                Светлота_Click(sender, e);
-            }
-
-        }
         #endregion
 
         #region Инструменты

@@ -71,10 +71,6 @@
             this.panel1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.RootN = new System.Windows.Forms.Button();
-            this.Тема = new System.Windows.Forms.ToolStripMenuItem();
-            this.Темнота = new System.Windows.Forms.ToolStripMenuItem();
-            this.Светлота = new System.Windows.Forms.ToolStripMenuItem();
-            this.Системно = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +79,6 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Menu;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Правка,
-            this.Тема,
             this.Справка});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -544,35 +539,6 @@
             this.RootN.Text = "ⁿ√x";
             this.RootN.UseVisualStyleBackColor = true;
             // 
-            // Тема
-            // 
-            this.Тема.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Темнота,
-            this.Светлота,
-            this.Системно});
-            this.Тема.Enabled = false;
-            this.Тема.Name = "Тема";
-            this.Тема.Size = new System.Drawing.Size(46, 20);
-            this.Тема.Text = "Тема";
-            // 
-            // Темнота
-            // 
-            this.Темнота.Name = "Темнота";
-            this.Темнота.Size = new System.Drawing.Size(180, 22);
-            this.Темнота.Text = "Тёмная";
-            // 
-            // Светлота
-            // 
-            this.Светлота.Name = "Светлота";
-            this.Светлота.Size = new System.Drawing.Size(180, 22);
-            this.Светлота.Text = "Светлая";
-            // 
-            // Системно
-            // 
-            this.Системно.Name = "Системно";
-            this.Системно.Size = new System.Drawing.Size(180, 22);
-            this.Системно.Text = "Системная";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -668,10 +634,6 @@
         private System.Windows.Forms.RichTextBox panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button RootN;
-        private System.Windows.Forms.ToolStripMenuItem Тема;
-        private System.Windows.Forms.ToolStripMenuItem Темнота;
-        private System.Windows.Forms.ToolStripMenuItem Светлота;
-        private System.Windows.Forms.ToolStripMenuItem Системно;
     }
 }
 
