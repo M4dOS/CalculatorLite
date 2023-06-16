@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,28 +13,43 @@ namespace CalculatorLite
     public partial class Form1 : Form
     {
         #region Переменные
-        string operation;//операции (+ - * / ^) 
         State CurrentState;//текущий статус 
+        Status CurrStatus;
         double? memory;//память
+
         double answer;//хранение значения
+        double? preserve;//хранение "модификаторов"
         enum State
         {
             NoState = -1,
             Substraction,
-            Addiction,
+            Addition,
             Multiplication,
             Divide,
-            Power
+            Power,
+            Squart,
+            Square,
+            Inverse,
+            RootN
+        }
+
+        enum Status
+        {
+            Nothing,
+            HavePreserve,
+            ReturnedAnswer
         }
 
         public Form1()
         {
             InitializeComponent();
             memory = null;
+            preserve = null;
             answer = 0;
             Value.Text = "0";
             Value.SelectionStart = Value.Text.Length;
             CurrentState = State.NoState;
+            CurrStatus = Status.Nothing;
             Вставить.Enabled = Clipboard.GetText() != "";
             КопироватьПамять.Enabled = memory != null; 
             КопироватьПоле.Enabled = Value.Text != string.Empty;
@@ -171,77 +187,78 @@ namespace CalculatorLite
         #region Циферки
         private void Num1_Click(object sender, EventArgs e)
         {
-            if(Value.Text == "0") Value.Text = "1";
+            if(Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "1";
             else Value.Text += "1";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num2_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "2";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "2";
             else Value.Text += "2";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num3_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "3";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "3";
             else Value.Text += "3";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num4_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "4";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "4";
             else Value.Text += "4";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num5_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "5";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "5";
             else Value.Text += "5";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num6_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "6";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "6";
             else Value.Text += "6";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num7_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "7";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "7";
             else Value.Text += "7";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num8_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "8";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "8";
             else Value.Text += "8";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num9_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") Value.Text = "9";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "9";
             else Value.Text += "9";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Num0_Click(object sender, EventArgs e)
         {
-            if (Value.Text == "0") { }
-            else Value.Text += "0";
+            if (Value.Text != "0" || CurrStatus != Status.Nothing) Value.Text += "0";
+
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Comma_Click(object sender, EventArgs e)
         {
-            if (Value.Text.Contains(",")) Value.Text = Value.Text.Replace(",", string.Empty);
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "0,";
+            else if (Value.Text.Contains(",")) Value.Text = Value.Text.Replace(",", string.Empty);
             Value.Text += ",";
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
@@ -269,12 +286,50 @@ namespace CalculatorLite
             if (Application.OpenForms["Info"] == null)
             {
                 Info form2 = new Info();
-                form2.Show();
+                form2.Activate();
+                form2.ShowDialog();
             }
             else
             {
                 Application.OpenForms["Info"].Activate();
             }
+        }
+
+        private void Светлота_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Темнота_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Система_Click(Object sender, EventArgs e)
+        {
+            bool isDarkTheme = false;
+
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", false);
+
+            if (key != null)
+            {
+                object value = key.GetValue("SystemUsesLightTheme");
+
+                if (value != null && value.ToString() == "0")
+                {
+                    isDarkTheme = true;
+                }
+
+                key.Close();
+            }
+
+            if (isDarkTheme)
+            {
+                Темнота_Click(sender, e);
+            }
+            else
+            {
+                Светлота_Click(sender, e);
+            }
+
         }
         #endregion
 
@@ -289,8 +344,9 @@ namespace CalculatorLite
             Value.Clear();
             Value.Text = "0";
             CurrentState = State.NoState;
-            operation = "";
+            CurrStatus = Status.Nothing;
             answer = 0;
+            preserve = 0;
         }
         private void Backspace_Click(object sender, EventArgs e)
         {
@@ -322,130 +378,196 @@ namespace CalculatorLite
             {
                 if (CurrentState == State.Divide)
                 {
-                    CurrentState = State.NoState;
-                    double buff2 = double.Parse(Value.Text);
-                    //textBox1.Text = double.Parse(buff).ToString() + "/" + double.Parse(textBox1.Text) + "=";
-                    Value.Text = (double.Parse(operation) / buff2).ToString();
+                    if (preserve != null) answer = (double)preserve;
+                    preserve = double.Parse(Value.Text);
+                    answer /= (double)preserve;
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
                 }
-                if (CurrentState == State.Multiplication)
+                else if (CurrentState == State.Multiplication)
                 {
-                    CurrentState = State.NoState;
-                    double buff2 = double.Parse(Value.Text);
-                    //textBox1.Text = double.Parse(buff).ToString() + "*" + double.Parse(textBox1.Text) + "=";
-                    Value.Text = (double.Parse(operation) * buff2).ToString();
+                    if (preserve != null) answer = (double)preserve;
+                    preserve = double.Parse(Value.Text);
+                    answer *= (double)preserve;
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
                 }
-                if (CurrentState == State.Substraction)
+                else if (CurrentState == State.Substraction)
                 {
-                    CurrentState = State.NoState;
-                    double buff2 = double.Parse(Value.Text);
-                    //textBox1.Text = double.Parse(buff).ToString() + "-" + double.Parse(textBox1.Text) + "=";
-                    Value.Text = (double.Parse(operation) - buff2).ToString();
+                    if (preserve != null) answer = (double)preserve;
+                    preserve = double.Parse(Value.Text);
+                    answer -= (double)preserve;
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
                 }
-                if (CurrentState == State.Addiction)
+                else if (CurrentState == State.Addition)
                 {
-                    CurrentState = State.NoState;
-                    double buff2 = double.Parse(Value.Text);
-                    //textBox1.Text = double.Parse(buff).ToString() + "+" + double.Parse(textBox1.Text) + "=";
-                    Value.Text = (double.Parse(operation) + buff2).ToString();
+                    if(preserve != null) answer = (double)preserve;
+                    preserve = double.Parse(Value.Text);
+                    answer += (double)preserve;
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
+                }
+                else if (CurrentState == State.Power)
+                {
+                    if (preserve != null) answer = (double)preserve;
+                    preserve = double.Parse(Value.Text);
+                    answer = Math.Pow(answer, (double)preserve);
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
+                }
+                else if (CurrentState == State.Squart)
+                {
+                    if (preserve != null) answer = (double)preserve;
+                    /*preserve = double.Parse(Value.Text);*/
+                    answer = Math.Sqrt(answer);
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
+                }
+                else if (CurrentState == State.Square)
+                {
+                    if (preserve != null) answer = (double)preserve;
+                    /*preserve = double.Parse(Value.Text);*/
+                    answer = Math.Pow(answer, 2);
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
+                }
+                else if (CurrentState == State.Inverse)
+                {
+                    if (preserve != null) answer = (double)preserve;
+                    /*preserve = double.Parse(Value.Text);*/
+                    answer = 1 / answer;
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
+                }
+                else if (CurrentState == State.RootN)
+                {
+                    if (preserve != null) answer = (double)preserve;
+                    preserve = double.Parse(Value.Text);
+                    answer = Math.Pow(answer, 1/(double)preserve);
+                    Value.Text = answer.ToString();
+                    CurrStatus = Status.ReturnedAnswer;
+                }
+                else
+                {
+                    CurrStatus = Status.Nothing;
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Try input incorrect data");
             }
-        }//=
+        }
 
         private void Multiplication_Click(object sender, EventArgs e)
         {
-            if (CurrentState == State.NoState)
-            {
-                CurrentState = State.Multiplication;
-                operation = Value.Text;
-                Value.Text = "";
-                Value.Focus();//focus on textbox1 and clear it
-                Value.SelectionStart = Value.Text.Length;
-            }
-        }//умножение
+            if(CurrentState != State.NoState) Equally_Click(sender, e);
+
+            CurrentState = State.Multiplication;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
+        }
         private void Subtraction_Click(object sender, EventArgs e)
         {
-            if (CurrentState == State.NoState)
-            {
-                CurrentState = State.Substraction;
-                operation = Value.Text;
-                Value.Text = "";
-                Value.Focus();//focus on textbox1 and clear it
-                Value.SelectionStart = Value.Text.Length;
-            }
-        }//вычитание
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
+
+            CurrentState = State.Substraction;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
+        }
         private void Divide_Click(object sender, EventArgs e)
         {
-            if (CurrentState == State.NoState)
-            {
-                CurrentState = State.Divide;
-                operation = Value.Text;
-                Value.Text = "";
-                Value.Focus();//focus on textbox1 and clear it
-                Value.SelectionStart = Value.Text.Length;
-            }
-        }//деление
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
+
+            CurrentState = State.Divide;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
+        }
         private void Addition_Click(object sender, EventArgs e)
         {
-            if (CurrentState == State.NoState)
-            {
-                CurrentState = State.Addiction;
-                operation = Value.Text;
-                Value.Text = "";
-                Value.Focus();//focus on textbox1 and clear it
-                Value.SelectionStart = Value.Text.Length;
-            }
-        }//сложение
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
+
+            CurrentState = State.Addition;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
+        }
         private void Squart_Click(object sender, EventArgs e)//извлечение квадратного корня
         {
-            try
-            {
-                if (Value.Text.Length > 0)
-                {
-                    Value.Text = Math.Sqrt(double.Parse(Value.Text)).ToString();
-                }
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
 
-            }
-            catch (Exception) { }
+            CurrentState = State.Squart;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
         }
         private void Inverse_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Value.Text = (1 / answer).ToString();
-                answer = 1 / answer;
-            }
-            catch (Exception) { }
-        }//1/x
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
+
+            CurrentState = State.Inverse;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
+        }
         private void Square_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Value.Text = Math.Pow(answer, 2).ToString();//x^2
-                answer = Math.Pow(answer, 2);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Попытайтесь ввести корректные для\nданной операции данные и повторите", "Калькулятор", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }//x^2
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
+
+            CurrentState = State.Square;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
+        }
 
         private void PlusMinus_Click(object sender, EventArgs e)
         {
             try
             {
-                Value.Text = (-answer).ToString();
-                answer = -answer;
+                if(Value.Text.Contains("-")) Value.Text = Value.Text.Replace("-", string.Empty);
+                else Value.Text = "-" + Value.Text;
             }
             catch (Exception) { }
         }
 
         private void Pow_Click(object sender, EventArgs e)
         {
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
 
+            CurrentState = State.Power;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
+        }
+        private void RootN_Click(object sender, EventArgs e)
+        {
+            if (CurrentState != State.NoState) Equally_Click(sender, e);
+
+            CurrentState = State.RootN;
+            preserve = double.Parse(Value.Text);
+            CurrStatus = Status.HavePreserve;
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
         }
 
         #endregion

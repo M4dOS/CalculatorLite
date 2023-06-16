@@ -36,7 +36,7 @@
             this.КопироватьПамять = new System.Windows.Forms.ToolStripMenuItem();
             this.КопироватьПоле = new System.Windows.Forms.ToolStripMenuItem();
             this.Вставить = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Справка = new System.Windows.Forms.ToolStripMenuItem();
             this.Инфа = new System.Windows.Forms.ToolStripMenuItem();
             this.Value = new System.Windows.Forms.TextBox();
             this.Clear = new System.Windows.Forms.Button();
@@ -70,14 +70,21 @@
             this.Pow = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.RootN = new System.Windows.Forms.Button();
+            this.Тема = new System.Windows.Forms.ToolStripMenuItem();
+            this.Темнота = new System.Windows.Forms.ToolStripMenuItem();
+            this.Светлота = new System.Windows.Forms.ToolStripMenuItem();
+            this.Системно = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Menu;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Правка,
-            this.справкаToolStripMenuItem});
+            this.Тема,
+            this.Справка});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(215, 24);
@@ -89,8 +96,9 @@
             this.Правка.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.КопироватьSelect,
             this.Вставить});
+            this.Правка.Font = new System.Drawing.Font("Consolas", 9F);
             this.Правка.Name = "Правка";
-            this.Правка.Size = new System.Drawing.Size(59, 20);
+            this.Правка.Size = new System.Drawing.Size(61, 20);
             this.Правка.Text = "Правка";
             // 
             // КопироватьSelect
@@ -99,47 +107,50 @@
             this.КопироватьПамять,
             this.КопироватьПоле});
             this.КопироватьSelect.Name = "КопироватьSelect";
-            this.КопироватьSelect.Size = new System.Drawing.Size(139, 22);
+            this.КопироватьSelect.Size = new System.Drawing.Size(180, 22);
             this.КопироватьSelect.Text = "Копировать";
             // 
             // КопироватьПамять
             // 
             this.КопироватьПамять.Name = "КопироватьПамять";
-            this.КопироватьПамять.Size = new System.Drawing.Size(173, 22);
+            this.КопироватьПамять.Size = new System.Drawing.Size(186, 22);
             this.КопироватьПамять.Text = "Из памяти";
             this.КопироватьПамять.Click += new System.EventHandler(this.КопироватьПамять_Click);
             // 
             // КопироватьПоле
             // 
             this.КопироватьПоле.Name = "КопироватьПоле";
-            this.КопироватьПоле.Size = new System.Drawing.Size(173, 22);
+            this.КопироватьПоле.Size = new System.Drawing.Size(186, 22);
             this.КопироватьПоле.Text = "Из поля значений";
             this.КопироватьПоле.Click += new System.EventHandler(this.КопироватьПоле_Click);
             // 
             // Вставить
             // 
             this.Вставить.Name = "Вставить";
-            this.Вставить.Size = new System.Drawing.Size(139, 22);
+            this.Вставить.Size = new System.Drawing.Size(180, 22);
             this.Вставить.Text = "Вставить";
             this.Вставить.Click += new System.EventHandler(this.Вставить_Click);
             // 
-            // справкаToolStripMenuItem
+            // Справка
             // 
-            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Справка.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Инфа});
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.справкаToolStripMenuItem.Text = "Справка";
+            this.Справка.Font = new System.Drawing.Font("Consolas", 9F);
+            this.Справка.Name = "Справка";
+            this.Справка.Size = new System.Drawing.Size(68, 20);
+            this.Справка.Text = "Справка";
             // 
             // Инфа
             // 
             this.Инфа.Name = "Инфа";
-            this.Инфа.Size = new System.Drawing.Size(149, 22);
+            this.Инфа.Size = new System.Drawing.Size(180, 22);
             this.Инфа.Text = "О программе";
-            this.Инфа.Click += new System.EventHandler(this.MemMinus_Click);
+            this.Инфа.Click += new System.EventHandler(this.Инфа_Click);
             // 
             // Value
             // 
+            this.Value.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Value.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Value.Location = new System.Drawing.Point(8, 58);
             this.Value.MaxLength = 32;
             this.Value.Name = "Value";
@@ -150,9 +161,9 @@
             // 
             // Clear
             // 
-            this.Clear.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Clear.ForeColor = System.Drawing.Color.Red;
-            this.Clear.Location = new System.Drawing.Point(170, 116);
+            this.Clear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Clear.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Clear.Location = new System.Drawing.Point(170, 118);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(34, 28);
             this.Clear.TabIndex = 2;
@@ -162,9 +173,9 @@
             // 
             // ClearAll
             // 
-            this.ClearAll.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClearAll.ForeColor = System.Drawing.Color.Red;
-            this.ClearAll.Location = new System.Drawing.Point(7, 117);
+            this.ClearAll.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClearAll.ForeColor = System.Drawing.Color.ForestGreen;
+            this.ClearAll.Location = new System.Drawing.Point(170, 150);
             this.ClearAll.Name = "ClearAll";
             this.ClearAll.Size = new System.Drawing.Size(34, 28);
             this.ClearAll.TabIndex = 3;
@@ -174,8 +185,8 @@
             // 
             // Backspace
             // 
-            this.Backspace.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Backspace.ForeColor = System.Drawing.Color.Red;
+            this.Backspace.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            this.Backspace.ForeColor = System.Drawing.Color.ForestGreen;
             this.Backspace.Location = new System.Drawing.Point(170, 84);
             this.Backspace.Name = "Backspace";
             this.Backspace.Size = new System.Drawing.Size(34, 28);
@@ -186,8 +197,8 @@
             // 
             // Num1
             // 
-            this.Num1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Num1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Num1.Location = new System.Drawing.Point(7, 220);
             this.Num1.Name = "Num1";
             this.Num1.Size = new System.Drawing.Size(34, 28);
@@ -198,9 +209,9 @@
             // 
             // Num2
             // 
-            this.Num2.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Num2.Location = new System.Drawing.Point(50, 219);
+            this.Num2.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num2.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.Num2.Location = new System.Drawing.Point(47, 220);
             this.Num2.Name = "Num2";
             this.Num2.Size = new System.Drawing.Size(34, 28);
             this.Num2.TabIndex = 7;
@@ -210,9 +221,9 @@
             // 
             // Num3
             // 
-            this.Num3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Num3.Location = new System.Drawing.Point(90, 219);
+            this.Num3.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num3.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.Num3.Location = new System.Drawing.Point(87, 220);
             this.Num3.Name = "Num3";
             this.Num3.Size = new System.Drawing.Size(34, 28);
             this.Num3.TabIndex = 8;
@@ -222,8 +233,8 @@
             // 
             // Divide
             // 
-            this.Divide.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Divide.ForeColor = System.Drawing.Color.Red;
+            this.Divide.Font = new System.Drawing.Font("Consolas", 9.5F, System.Drawing.FontStyle.Bold);
+            this.Divide.ForeColor = System.Drawing.Color.ForestGreen;
             this.Divide.Location = new System.Drawing.Point(130, 116);
             this.Divide.Name = "Divide";
             this.Divide.Size = new System.Drawing.Size(34, 28);
@@ -234,9 +245,9 @@
             // 
             // Squart
             // 
-            this.Squart.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Squart.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Squart.Location = new System.Drawing.Point(50, 117);
+            this.Squart.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Squart.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Squart.Location = new System.Drawing.Point(47, 118);
             this.Squart.Name = "Squart";
             this.Squart.Size = new System.Drawing.Size(34, 28);
             this.Squart.TabIndex = 10;
@@ -246,9 +257,9 @@
             // 
             // Inverse
             // 
-            this.Inverse.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Inverse.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Inverse.Location = new System.Drawing.Point(170, 187);
+            this.Inverse.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Bold);
+            this.Inverse.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Inverse.Location = new System.Drawing.Point(7, 118);
             this.Inverse.Name = "Inverse";
             this.Inverse.Size = new System.Drawing.Size(34, 28);
             this.Inverse.TabIndex = 15;
@@ -258,8 +269,8 @@
             // 
             // Multiplication
             // 
-            this.Multiplication.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Multiplication.ForeColor = System.Drawing.Color.Red;
+            this.Multiplication.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold);
+            this.Multiplication.ForeColor = System.Drawing.Color.ForestGreen;
             this.Multiplication.Location = new System.Drawing.Point(130, 150);
             this.Multiplication.Name = "Multiplication";
             this.Multiplication.Size = new System.Drawing.Size(34, 28);
@@ -270,9 +281,9 @@
             // 
             // Num6
             // 
-            this.Num6.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Num6.Location = new System.Drawing.Point(90, 186);
+            this.Num6.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num6.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.Num6.Location = new System.Drawing.Point(87, 185);
             this.Num6.Name = "Num6";
             this.Num6.Size = new System.Drawing.Size(34, 28);
             this.Num6.TabIndex = 13;
@@ -282,9 +293,9 @@
             // 
             // Num5
             // 
-            this.Num5.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Num5.Location = new System.Drawing.Point(50, 185);
+            this.Num5.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num5.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.Num5.Location = new System.Drawing.Point(47, 186);
             this.Num5.Name = "Num5";
             this.Num5.Size = new System.Drawing.Size(34, 28);
             this.Num5.TabIndex = 12;
@@ -294,8 +305,8 @@
             // 
             // Num4
             // 
-            this.Num4.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Num4.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num4.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Num4.Location = new System.Drawing.Point(7, 186);
             this.Num4.Name = "Num4";
             this.Num4.Size = new System.Drawing.Size(34, 28);
@@ -306,9 +317,9 @@
             // 
             // Square
             // 
-            this.Square.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Square.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Square.Location = new System.Drawing.Point(90, 117);
+            this.Square.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Square.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Square.Location = new System.Drawing.Point(87, 118);
             this.Square.Name = "Square";
             this.Square.Size = new System.Drawing.Size(34, 28);
             this.Square.TabIndex = 20;
@@ -318,8 +329,8 @@
             // 
             // Subtraction
             // 
-            this.Subtraction.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Subtraction.ForeColor = System.Drawing.Color.Red;
+            this.Subtraction.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            this.Subtraction.ForeColor = System.Drawing.Color.ForestGreen;
             this.Subtraction.Location = new System.Drawing.Point(130, 186);
             this.Subtraction.Name = "Subtraction";
             this.Subtraction.Size = new System.Drawing.Size(34, 28);
@@ -330,9 +341,9 @@
             // 
             // Num9
             // 
-            this.Num9.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num9.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Num9.Location = new System.Drawing.Point(90, 152);
+            this.Num9.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num9.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.Num9.Location = new System.Drawing.Point(87, 152);
             this.Num9.Name = "Num9";
             this.Num9.Size = new System.Drawing.Size(34, 28);
             this.Num9.TabIndex = 18;
@@ -342,9 +353,9 @@
             // 
             // Num8
             // 
-            this.Num8.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num8.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Num8.Location = new System.Drawing.Point(50, 150);
+            this.Num8.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num8.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.Num8.Location = new System.Drawing.Point(47, 151);
             this.Num8.Name = "Num8";
             this.Num8.Size = new System.Drawing.Size(34, 28);
             this.Num8.TabIndex = 17;
@@ -354,8 +365,8 @@
             // 
             // Num7
             // 
-            this.Num7.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Num7.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num7.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Num7.Location = new System.Drawing.Point(7, 152);
             this.Num7.Name = "Num7";
             this.Num7.Size = new System.Drawing.Size(34, 28);
@@ -366,11 +377,11 @@
             // 
             // Equally
             // 
-            this.Equally.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Equally.ForeColor = System.Drawing.Color.Red;
-            this.Equally.Location = new System.Drawing.Point(170, 219);
+            this.Equally.Font = new System.Drawing.Font("Consolas", 13F, System.Drawing.FontStyle.Bold);
+            this.Equally.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Equally.Location = new System.Drawing.Point(130, 254);
             this.Equally.Name = "Equally";
-            this.Equally.Size = new System.Drawing.Size(34, 63);
+            this.Equally.Size = new System.Drawing.Size(74, 28);
             this.Equally.TabIndex = 25;
             this.Equally.Text = "=";
             this.Equally.UseVisualStyleBackColor = true;
@@ -378,8 +389,8 @@
             // 
             // Addition
             // 
-            this.Addition.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Addition.ForeColor = System.Drawing.Color.Red;
+            this.Addition.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Addition.ForeColor = System.Drawing.Color.ForestGreen;
             this.Addition.Location = new System.Drawing.Point(130, 219);
             this.Addition.Name = "Addition";
             this.Addition.Size = new System.Drawing.Size(34, 28);
@@ -390,9 +401,9 @@
             // 
             // Comma
             // 
-            this.Comma.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Comma.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Comma.Location = new System.Drawing.Point(90, 254);
+            this.Comma.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Comma.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.Comma.Location = new System.Drawing.Point(47, 254);
             this.Comma.Name = "Comma";
             this.Comma.Size = new System.Drawing.Size(34, 28);
             this.Comma.TabIndex = 23;
@@ -402,9 +413,9 @@
             // 
             // PlusMinus
             // 
-            this.PlusMinus.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PlusMinus.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.PlusMinus.Location = new System.Drawing.Point(130, 254);
+            this.PlusMinus.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.PlusMinus.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.PlusMinus.Location = new System.Drawing.Point(87, 254);
             this.PlusMinus.Name = "PlusMinus";
             this.PlusMinus.Size = new System.Drawing.Size(34, 28);
             this.PlusMinus.TabIndex = 22;
@@ -414,11 +425,11 @@
             // 
             // Num0
             // 
-            this.Num0.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Num0.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Num0.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
+            this.Num0.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Num0.Location = new System.Drawing.Point(7, 254);
             this.Num0.Name = "Num0";
-            this.Num0.Size = new System.Drawing.Size(77, 28);
+            this.Num0.Size = new System.Drawing.Size(34, 28);
             this.Num0.TabIndex = 21;
             this.Num0.Text = "0";
             this.Num0.UseVisualStyleBackColor = true;
@@ -427,8 +438,8 @@
             // MemoryClear
             // 
             this.MemoryClear.Enabled = false;
-            this.MemoryClear.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MemoryClear.ForeColor = System.Drawing.Color.Red;
+            this.MemoryClear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MemoryClear.ForeColor = System.Drawing.Color.ForestGreen;
             this.MemoryClear.Location = new System.Drawing.Point(7, 84);
             this.MemoryClear.Name = "MemoryClear";
             this.MemoryClear.Size = new System.Drawing.Size(34, 28);
@@ -440,9 +451,9 @@
             // MemReplace
             // 
             this.MemReplace.Enabled = false;
-            this.MemReplace.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MemReplace.ForeColor = System.Drawing.Color.Red;
-            this.MemReplace.Location = new System.Drawing.Point(50, 84);
+            this.MemReplace.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MemReplace.ForeColor = System.Drawing.Color.ForestGreen;
+            this.MemReplace.Location = new System.Drawing.Point(47, 84);
             this.MemReplace.Name = "MemReplace";
             this.MemReplace.Size = new System.Drawing.Size(34, 28);
             this.MemReplace.TabIndex = 27;
@@ -452,9 +463,9 @@
             // 
             // MemPlus
             // 
-            this.MemPlus.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MemPlus.ForeColor = System.Drawing.Color.Red;
-            this.MemPlus.Location = new System.Drawing.Point(90, 84);
+            this.MemPlus.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MemPlus.ForeColor = System.Drawing.Color.ForestGreen;
+            this.MemPlus.Location = new System.Drawing.Point(87, 84);
             this.MemPlus.Name = "MemPlus";
             this.MemPlus.Size = new System.Drawing.Size(34, 28);
             this.MemPlus.TabIndex = 29;
@@ -470,21 +481,21 @@
             // 
             // MemMinus
             // 
-            this.MemMinus.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MemMinus.ForeColor = System.Drawing.Color.Red;
+            this.MemMinus.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MemMinus.ForeColor = System.Drawing.Color.ForestGreen;
             this.MemMinus.Location = new System.Drawing.Point(130, 84);
             this.MemMinus.Name = "MemMinus";
             this.MemMinus.Size = new System.Drawing.Size(34, 28);
             this.MemMinus.TabIndex = 31;
             this.MemMinus.Text = "M-";
             this.MemMinus.UseVisualStyleBackColor = true;
-            this.MemPlus.Click += new System.EventHandler(this.MemMinus_Click);
+            this.MemMinus.Click += new System.EventHandler(this.MemMinus_Click);
             // 
             // Pow
             // 
-            this.Pow.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pow.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Pow.Location = new System.Drawing.Point(170, 150);
+            this.Pow.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Pow.ForeColor = System.Drawing.Color.ForestGreen;
+            this.Pow.Location = new System.Drawing.Point(170, 186);
             this.Pow.Name = "Pow";
             this.Pow.Size = new System.Drawing.Size(34, 28);
             this.Pow.TabIndex = 32;
@@ -498,13 +509,15 @@
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.panel1.DetectUrls = false;
-            this.panel1.Location = new System.Drawing.Point(55, 30);
+            this.panel1.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.panel1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.panel1.Location = new System.Drawing.Point(62, 36);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.MaxLength = 64;
             this.panel1.Multiline = false;
             this.panel1.Name = "panel1";
             this.panel1.ReadOnly = true;
-            this.panel1.Size = new System.Drawing.Size(149, 20);
+            this.panel1.Size = new System.Drawing.Size(142, 16);
             this.panel1.TabIndex = 33;
             this.panel1.Text = "";
             // 
@@ -512,11 +525,53 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(5, 37);
+            this.label1.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label1.Location = new System.Drawing.Point(5, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 34;
             this.label1.Text = "Память:";
+            // 
+            // RootN
+            // 
+            this.RootN.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Bold);
+            this.RootN.ForeColor = System.Drawing.Color.ForestGreen;
+            this.RootN.Location = new System.Drawing.Point(170, 219);
+            this.RootN.Name = "RootN";
+            this.RootN.Size = new System.Drawing.Size(34, 28);
+            this.RootN.TabIndex = 35;
+            this.RootN.Text = "ⁿ√x";
+            this.RootN.UseVisualStyleBackColor = true;
+            // 
+            // Тема
+            // 
+            this.Тема.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Темнота,
+            this.Светлота,
+            this.Системно});
+            this.Тема.Enabled = false;
+            this.Тема.Name = "Тема";
+            this.Тема.Size = new System.Drawing.Size(46, 20);
+            this.Тема.Text = "Тема";
+            // 
+            // Темнота
+            // 
+            this.Темнота.Name = "Темнота";
+            this.Темнота.Size = new System.Drawing.Size(180, 22);
+            this.Темнота.Text = "Тёмная";
+            // 
+            // Светлота
+            // 
+            this.Светлота.Name = "Светлота";
+            this.Светлота.Size = new System.Drawing.Size(180, 22);
+            this.Светлота.Text = "Светлая";
+            // 
+            // Системно
+            // 
+            this.Системно.Name = "Системно";
+            this.Системно.Size = new System.Drawing.Size(180, 22);
+            this.Системно.Text = "Системная";
             // 
             // Form1
             // 
@@ -524,6 +579,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(215, 292);
+            this.Controls.Add(this.RootN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Pow);
@@ -556,7 +612,7 @@
             this.Controls.Add(this.ClearAll);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -575,7 +631,7 @@
         private System.Windows.Forms.ToolStripMenuItem Правка;
         private System.Windows.Forms.ToolStripMenuItem КопироватьSelect;
         private System.Windows.Forms.ToolStripMenuItem Вставить;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Справка;
         private System.Windows.Forms.ToolStripMenuItem Инфа;
         private System.Windows.Forms.TextBox Value;
         private System.Windows.Forms.Button Clear;
@@ -611,6 +667,11 @@
         private System.Windows.Forms.Button Pow;
         private System.Windows.Forms.RichTextBox panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button RootN;
+        private System.Windows.Forms.ToolStripMenuItem Тема;
+        private System.Windows.Forms.ToolStripMenuItem Темнота;
+        private System.Windows.Forms.ToolStripMenuItem Светлота;
+        private System.Windows.Forms.ToolStripMenuItem Системно;
     }
 }
 

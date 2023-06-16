@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace CalculatorLite
 {
@@ -44,33 +45,34 @@ namespace CalculatorLite
             // Head1
             // 
             this.Head1.AutoSize = true;
-            this.Head1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Head1.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Head1.Location = new System.Drawing.Point(12, 9);
             this.Head1.Name = "Head1";
-            this.Head1.Size = new System.Drawing.Size(430, 37);
+            this.Head1.Size = new System.Drawing.Size(485, 37);
             this.Head1.TabIndex = 0;
             this.Head1.Text = "Калькулятор CalculatorLite";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 60);
+            this.label1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(108, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(354, 67);
+            this.label1.Size = new System.Drawing.Size(378, 69);
             this.label1.TabIndex = 1;
             this.label1.Text = "Этот калькулятор создан специально для лабораторной работы \r\nпо предмету \"Объектн" +
     "о-ориентированное программирование\".\r\n\r\nВ нём реализованы основные и необходимые" +
     " для простого \r\nкалькулятора функции.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseCompatibleTextRendering = true;
             this.label1.UseWaitCursor = true;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(19, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(19, 49);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 67);
+            this.pictureBox1.Size = new System.Drawing.Size(73, 80);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -81,29 +83,31 @@ namespace CalculatorLite
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(163, 185);
+            this.label2.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.label2.Location = new System.Drawing.Point(178, 147);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Контакты и ссылки";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(229, 198);
+            this.linkLabel1.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.linkLabel1.Location = new System.Drawing.Point(244, 160);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(40, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(43, 13);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "GitHub";
-            this.linkLabel1.LinkClicked += LinkLabel1_LinkClicked;
             // 
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(163, 198);
+            this.linkLabel3.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.linkLabel3.Location = new System.Drawing.Point(178, 160);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(51, 13);
+            this.linkLabel3.Size = new System.Drawing.Size(55, 13);
             this.linkLabel3.TabIndex = 5;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "Telegram";
@@ -114,9 +118,10 @@ namespace CalculatorLite
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(147, 221);
+            this.label3.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(154, 184);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 13);
+            this.label3.Size = new System.Drawing.Size(169, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "© Копирайт Smile Greenlight";
             // 
@@ -124,7 +129,7 @@ namespace CalculatorLite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 250);
+            this.ClientSize = new System.Drawing.Size(505, 210);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.linkLabel3);
@@ -132,8 +137,8 @@ namespace CalculatorLite
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Head1);
-            this.Enabled = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Info";
             this.Text = "О программе";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -142,9 +147,14 @@ namespace CalculatorLite
 
         }
 
+        private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://t.me/mados_4ever");
+        }
+
         private void LinkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(linkLabel1.Text);
+            Process.Start("https://github.com/M4dOS/CalculatorLite");
         }
 
         #endregion
