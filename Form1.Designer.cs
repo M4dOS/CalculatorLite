@@ -73,6 +73,7 @@ namespace CalculatorLite
             this.panel1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.RootN = new System.Windows.Forms.Button();
+            this.Saver = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +85,7 @@ namespace CalculatorLite
             this.Справка});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(215, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(210, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "UpMenu";
             // 
@@ -146,12 +147,13 @@ namespace CalculatorLite
             // 
             // Value
             // 
+            this.Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Value.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.Value.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Value.Location = new System.Drawing.Point(8, 58);
+            this.Value.Location = new System.Drawing.Point(7, 80);
             this.Value.MaxLength = 256;
             this.Value.Name = "Value";
-            this.Value.Size = new System.Drawing.Size(196, 20);
+            this.Value.Size = new System.Drawing.Size(195, 20);
             this.Value.TabIndex = 1;
             this.Value.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Value.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Value_KeyPress);
@@ -160,7 +162,7 @@ namespace CalculatorLite
             // 
             this.Clear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Clear.ForeColor = System.Drawing.Color.DarkOrange;
-            this.Clear.Location = new System.Drawing.Point(170, 118);
+            this.Clear.Location = new System.Drawing.Point(169, 140);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(34, 28);
             this.Clear.TabIndex = 2;
@@ -172,7 +174,7 @@ namespace CalculatorLite
             // 
             this.ClearAll.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ClearAll.ForeColor = System.Drawing.Color.OrangeRed;
-            this.ClearAll.Location = new System.Drawing.Point(170, 150);
+            this.ClearAll.Location = new System.Drawing.Point(169, 172);
             this.ClearAll.Name = "ClearAll";
             this.ClearAll.Size = new System.Drawing.Size(34, 28);
             this.ClearAll.TabIndex = 3;
@@ -184,7 +186,7 @@ namespace CalculatorLite
             // 
             this.Backspace.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
             this.Backspace.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.Backspace.Location = new System.Drawing.Point(170, 84);
+            this.Backspace.Location = new System.Drawing.Point(169, 106);
             this.Backspace.Name = "Backspace";
             this.Backspace.Size = new System.Drawing.Size(34, 28);
             this.Backspace.TabIndex = 4;
@@ -196,7 +198,7 @@ namespace CalculatorLite
             // 
             this.Num1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num1.Location = new System.Drawing.Point(7, 220);
+            this.Num1.Location = new System.Drawing.Point(6, 242);
             this.Num1.Name = "Num1";
             this.Num1.Size = new System.Drawing.Size(34, 28);
             this.Num1.TabIndex = 6;
@@ -208,7 +210,7 @@ namespace CalculatorLite
             // 
             this.Num2.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num2.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num2.Location = new System.Drawing.Point(47, 220);
+            this.Num2.Location = new System.Drawing.Point(46, 242);
             this.Num2.Name = "Num2";
             this.Num2.Size = new System.Drawing.Size(34, 28);
             this.Num2.TabIndex = 7;
@@ -220,7 +222,7 @@ namespace CalculatorLite
             // 
             this.Num3.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num3.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num3.Location = new System.Drawing.Point(87, 220);
+            this.Num3.Location = new System.Drawing.Point(86, 242);
             this.Num3.Name = "Num3";
             this.Num3.Size = new System.Drawing.Size(34, 28);
             this.Num3.TabIndex = 8;
@@ -232,7 +234,7 @@ namespace CalculatorLite
             // 
             this.Divide.Font = new System.Drawing.Font("Consolas", 9.5F, System.Drawing.FontStyle.Bold);
             this.Divide.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Divide.Location = new System.Drawing.Point(130, 116);
+            this.Divide.Location = new System.Drawing.Point(129, 138);
             this.Divide.Name = "Divide";
             this.Divide.Size = new System.Drawing.Size(34, 28);
             this.Divide.TabIndex = 9;
@@ -244,7 +246,7 @@ namespace CalculatorLite
             // 
             this.Squart.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Squart.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Squart.Location = new System.Drawing.Point(47, 118);
+            this.Squart.Location = new System.Drawing.Point(46, 140);
             this.Squart.Name = "Squart";
             this.Squart.Size = new System.Drawing.Size(34, 28);
             this.Squart.TabIndex = 10;
@@ -256,7 +258,7 @@ namespace CalculatorLite
             // 
             this.Inverse.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Bold);
             this.Inverse.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Inverse.Location = new System.Drawing.Point(7, 118);
+            this.Inverse.Location = new System.Drawing.Point(6, 140);
             this.Inverse.Name = "Inverse";
             this.Inverse.Size = new System.Drawing.Size(34, 28);
             this.Inverse.TabIndex = 15;
@@ -268,7 +270,7 @@ namespace CalculatorLite
             // 
             this.Multiplication.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold);
             this.Multiplication.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Multiplication.Location = new System.Drawing.Point(130, 150);
+            this.Multiplication.Location = new System.Drawing.Point(129, 172);
             this.Multiplication.Name = "Multiplication";
             this.Multiplication.Size = new System.Drawing.Size(34, 28);
             this.Multiplication.TabIndex = 14;
@@ -280,7 +282,7 @@ namespace CalculatorLite
             // 
             this.Num6.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num6.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num6.Location = new System.Drawing.Point(87, 185);
+            this.Num6.Location = new System.Drawing.Point(86, 207);
             this.Num6.Name = "Num6";
             this.Num6.Size = new System.Drawing.Size(34, 28);
             this.Num6.TabIndex = 13;
@@ -292,7 +294,7 @@ namespace CalculatorLite
             // 
             this.Num5.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num5.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num5.Location = new System.Drawing.Point(47, 186);
+            this.Num5.Location = new System.Drawing.Point(46, 208);
             this.Num5.Name = "Num5";
             this.Num5.Size = new System.Drawing.Size(34, 28);
             this.Num5.TabIndex = 12;
@@ -304,7 +306,7 @@ namespace CalculatorLite
             // 
             this.Num4.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num4.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num4.Location = new System.Drawing.Point(7, 186);
+            this.Num4.Location = new System.Drawing.Point(6, 208);
             this.Num4.Name = "Num4";
             this.Num4.Size = new System.Drawing.Size(34, 28);
             this.Num4.TabIndex = 11;
@@ -316,7 +318,7 @@ namespace CalculatorLite
             // 
             this.Square.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Square.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Square.Location = new System.Drawing.Point(87, 118);
+            this.Square.Location = new System.Drawing.Point(86, 140);
             this.Square.Name = "Square";
             this.Square.Size = new System.Drawing.Size(34, 28);
             this.Square.TabIndex = 20;
@@ -328,7 +330,7 @@ namespace CalculatorLite
             // 
             this.Subtraction.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
             this.Subtraction.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Subtraction.Location = new System.Drawing.Point(130, 186);
+            this.Subtraction.Location = new System.Drawing.Point(129, 208);
             this.Subtraction.Name = "Subtraction";
             this.Subtraction.Size = new System.Drawing.Size(34, 28);
             this.Subtraction.TabIndex = 19;
@@ -340,7 +342,7 @@ namespace CalculatorLite
             // 
             this.Num9.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num9.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num9.Location = new System.Drawing.Point(87, 152);
+            this.Num9.Location = new System.Drawing.Point(86, 174);
             this.Num9.Name = "Num9";
             this.Num9.Size = new System.Drawing.Size(34, 28);
             this.Num9.TabIndex = 18;
@@ -352,7 +354,7 @@ namespace CalculatorLite
             // 
             this.Num8.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num8.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num8.Location = new System.Drawing.Point(47, 151);
+            this.Num8.Location = new System.Drawing.Point(46, 173);
             this.Num8.Name = "Num8";
             this.Num8.Size = new System.Drawing.Size(34, 28);
             this.Num8.TabIndex = 17;
@@ -364,7 +366,7 @@ namespace CalculatorLite
             // 
             this.Num7.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num7.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num7.Location = new System.Drawing.Point(7, 152);
+            this.Num7.Location = new System.Drawing.Point(6, 174);
             this.Num7.Name = "Num7";
             this.Num7.Size = new System.Drawing.Size(34, 28);
             this.Num7.TabIndex = 16;
@@ -376,7 +378,7 @@ namespace CalculatorLite
             // 
             this.Equally.Font = new System.Drawing.Font("Consolas", 13F, System.Drawing.FontStyle.Bold);
             this.Equally.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Equally.Location = new System.Drawing.Point(130, 254);
+            this.Equally.Location = new System.Drawing.Point(129, 276);
             this.Equally.Name = "Equally";
             this.Equally.Size = new System.Drawing.Size(74, 28);
             this.Equally.TabIndex = 25;
@@ -388,7 +390,7 @@ namespace CalculatorLite
             // 
             this.Addition.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Addition.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Addition.Location = new System.Drawing.Point(130, 219);
+            this.Addition.Location = new System.Drawing.Point(129, 241);
             this.Addition.Name = "Addition";
             this.Addition.Size = new System.Drawing.Size(34, 28);
             this.Addition.TabIndex = 24;
@@ -400,7 +402,7 @@ namespace CalculatorLite
             // 
             this.Comma.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Comma.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Comma.Location = new System.Drawing.Point(47, 254);
+            this.Comma.Location = new System.Drawing.Point(46, 276);
             this.Comma.Name = "Comma";
             this.Comma.Size = new System.Drawing.Size(34, 28);
             this.Comma.TabIndex = 23;
@@ -412,7 +414,7 @@ namespace CalculatorLite
             // 
             this.PlusMinus.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.PlusMinus.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.PlusMinus.Location = new System.Drawing.Point(87, 254);
+            this.PlusMinus.Location = new System.Drawing.Point(86, 276);
             this.PlusMinus.Name = "PlusMinus";
             this.PlusMinus.Size = new System.Drawing.Size(34, 28);
             this.PlusMinus.TabIndex = 22;
@@ -424,7 +426,7 @@ namespace CalculatorLite
             // 
             this.Num0.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold);
             this.Num0.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Num0.Location = new System.Drawing.Point(7, 254);
+            this.Num0.Location = new System.Drawing.Point(6, 276);
             this.Num0.Name = "Num0";
             this.Num0.Size = new System.Drawing.Size(34, 28);
             this.Num0.TabIndex = 21;
@@ -437,7 +439,7 @@ namespace CalculatorLite
             this.MemoryClear.Enabled = false;
             this.MemoryClear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MemoryClear.ForeColor = System.Drawing.Color.DarkOrange;
-            this.MemoryClear.Location = new System.Drawing.Point(7, 84);
+            this.MemoryClear.Location = new System.Drawing.Point(6, 106);
             this.MemoryClear.Name = "MemoryClear";
             this.MemoryClear.Size = new System.Drawing.Size(34, 28);
             this.MemoryClear.TabIndex = 26;
@@ -450,7 +452,7 @@ namespace CalculatorLite
             this.MemReplace.Enabled = false;
             this.MemReplace.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MemReplace.ForeColor = System.Drawing.Color.ForestGreen;
-            this.MemReplace.Location = new System.Drawing.Point(47, 84);
+            this.MemReplace.Location = new System.Drawing.Point(46, 106);
             this.MemReplace.Name = "MemReplace";
             this.MemReplace.Size = new System.Drawing.Size(34, 28);
             this.MemReplace.TabIndex = 27;
@@ -462,7 +464,7 @@ namespace CalculatorLite
             // 
             this.MemPlus.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MemPlus.ForeColor = System.Drawing.Color.ForestGreen;
-            this.MemPlus.Location = new System.Drawing.Point(87, 84);
+            this.MemPlus.Location = new System.Drawing.Point(86, 106);
             this.MemPlus.Name = "MemPlus";
             this.MemPlus.Size = new System.Drawing.Size(34, 28);
             this.MemPlus.TabIndex = 29;
@@ -480,7 +482,7 @@ namespace CalculatorLite
             // 
             this.MemMinus.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MemMinus.ForeColor = System.Drawing.Color.ForestGreen;
-            this.MemMinus.Location = new System.Drawing.Point(130, 84);
+            this.MemMinus.Location = new System.Drawing.Point(129, 106);
             this.MemMinus.Name = "MemMinus";
             this.MemMinus.Size = new System.Drawing.Size(34, 28);
             this.MemMinus.TabIndex = 31;
@@ -492,7 +494,7 @@ namespace CalculatorLite
             // 
             this.Pow.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Pow.ForeColor = System.Drawing.Color.ForestGreen;
-            this.Pow.Location = new System.Drawing.Point(170, 186);
+            this.Pow.Location = new System.Drawing.Point(169, 208);
             this.Pow.Name = "Pow";
             this.Pow.Size = new System.Drawing.Size(34, 28);
             this.Pow.TabIndex = 32;
@@ -509,23 +511,24 @@ namespace CalculatorLite
             this.panel1.DetectUrls = false;
             this.panel1.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.panel1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.panel1.Location = new System.Drawing.Point(62, 36);
+            this.panel1.Location = new System.Drawing.Point(59, 32);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.MaxLength = 64;
             this.panel1.Multiline = false;
             this.panel1.Name = "panel1";
             this.panel1.ReadOnly = true;
-            this.panel1.Size = new System.Drawing.Size(142, 16);
+            this.panel1.Size = new System.Drawing.Size(142, 19);
             this.panel1.TabIndex = 33;
+            this.panel1.TabStop = false;
             this.panel1.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.label1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(5, 39);
+            this.label1.Location = new System.Drawing.Point(4, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 34;
@@ -535,7 +538,7 @@ namespace CalculatorLite
             // 
             this.RootN.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Bold);
             this.RootN.ForeColor = System.Drawing.Color.ForestGreen;
-            this.RootN.Location = new System.Drawing.Point(170, 219);
+            this.RootN.Location = new System.Drawing.Point(169, 241);
             this.RootN.Name = "RootN";
             this.RootN.Size = new System.Drawing.Size(34, 28);
             this.RootN.TabIndex = 35;
@@ -543,12 +546,26 @@ namespace CalculatorLite
             this.RootN.UseVisualStyleBackColor = true;
             this.RootN.Click += new System.EventHandler(this.RootN_Click);
             // 
+            // Saver
+            // 
+            this.Saver.BackColor = System.Drawing.Color.Lavender;
+            this.Saver.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Saver.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Saver.Location = new System.Drawing.Point(7, 61);
+            this.Saver.Name = "Saver";
+            this.Saver.ReadOnly = true;
+            this.Saver.Size = new System.Drawing.Size(193, 13);
+            this.Saver.TabIndex = 36;
+            this.Saver.TabStop = false;
+            this.Saver.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(215, 292);
+            this.ClientSize = new System.Drawing.Size(210, 314);
+            this.Controls.Add(this.Saver);
             this.Controls.Add(this.RootN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -582,7 +599,7 @@ namespace CalculatorLite
             this.Controls.Add(this.ClearAll);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -638,6 +655,7 @@ namespace CalculatorLite
         private System.Windows.Forms.RichTextBox panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button RootN;
+        private TextBox Saver;
     }
 }
 

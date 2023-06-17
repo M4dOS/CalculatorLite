@@ -204,7 +204,7 @@ namespace CalculatorLite
             else if (Value.Text.Contains(",")) { Value.Text = Value.Text.Replace(",", string.Empty); Value.Text += ","; }
             else Value.Text += ",";
 
-            while (Value.Text[0] == '0' && Value.Text.Length>2) Value.Text = Value.Text.Substring(1);
+            while (Value.Text[0] == '0' && Value.Text.Length > 2) Value.Text = Value.Text.Substring(1);
 
             CurrStatus = Status.Nothing;
             Value.Focus();
@@ -216,6 +216,9 @@ namespace CalculatorLite
             {
                 if (Value.Text.Contains("-")) Value.Text = Value.Text.Replace("-", string.Empty);
                 else Value.Text = "-" + Value.Text;
+
+                Value.Focus();
+                Value.SelectionStart = Value.Text.Length;
             }
             catch (Exception) { }
         }
@@ -257,6 +260,9 @@ namespace CalculatorLite
         {
             Value.Clear();
             Value.Text = "0";
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
         }
         private void ClearAll_Click(object sender, EventArgs e)
         {
@@ -266,6 +272,10 @@ namespace CalculatorLite
             CurrStatus = Status.Nothing;
             answer = null;
             preserve = null;
+            Saver.Text = "";
+
+            Value.Focus();
+            Value.SelectionStart = Value.Text.Length;
         }
         private void Backspace_Click(object sender, EventArgs e)
         {
@@ -273,6 +283,9 @@ namespace CalculatorLite
             {
                 Value.Text = Value.Text.Substring(0, Value.Text.Length - 1);
                 if (Value.Text == "") Value.Text = "0";
+
+                Value.Focus();
+                Value.SelectionStart = Value.Text.Length;
             }
             catch (Exception) { }
         }
@@ -282,7 +295,7 @@ namespace CalculatorLite
             if (!(Char.IsDigit(e.KeyChar)))
             {
                 e.Handled = true;
-                if (e.KeyChar == '.' || e.KeyChar == ',' || e.KeyChar == (char)Keys.Back) Comma_Click(sender, e);
+                if (e.KeyChar == '.' || e.KeyChar == ',') Comma_Click(sender, e);
                 else if (e.KeyChar == '+') Addition_Click(sender, e);
                 else if (e.KeyChar == '-') Subtraction_Click(sender, e);
                 else if (e.KeyChar == '/') Divide_Click(sender, e);
@@ -290,24 +303,16 @@ namespace CalculatorLite
                 else if (e.KeyChar == '^') Pow_Click(sender, e);
                 else if (e.KeyChar == (char)Keys.Delete) ClearAll_Click(sender, e);
                 else if (e.KeyChar == (char)Keys.Enter) Equally_Click(sender, e);
+                else if (e.KeyChar == (char)Keys.Back) Backspace_Click(sender, e);
             }
-            /*else if (Value.Text == "0")
-            {
-                Value.Text = e.KeyChar.ToString();
-                e.Handled = true;
-                Value.Focus();
-                Value.SelectionStart = Value.Text.Length;
-            }*/
             else
             {
                 if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = e.KeyChar.ToString();
                 else Value.Text += e.KeyChar.ToString();
                 CurrStatus = Status.Nothing;
-                Value.Focus();
-                Value.SelectionStart = Value.Text.Length;
                 e.Handled = true;
             }
-            
+
         }
         #endregion
 
@@ -316,8 +321,7 @@ namespace CalculatorLite
         {
             try
             {
-                if (preserve == null) preserve = double.Parse(Value.Text);
-                /*else preserve = double.Parse(Value.Text);*/
+                preserve = double.Parse(Value.Text);
                 switch (CurrentState)
                 {
                     case State.NoState:
@@ -352,9 +356,11 @@ namespace CalculatorLite
                         answer = Math.Pow((double)answer, 1.0 / (double)preserve);
                         break;
                 }
+                Saver.Text = $"= {answer}";
                 Value.Text = answer.ToString();
                 CurrStatus = Status.ReturnedAnswer;
-                /*CurrentState = State.NoState;*/
+                Value.Focus();
+                Value.SelectionStart = Value.Text.Length;
             }
             catch (Exception ex) { MessageBox.Show("Вызвана следующая ошибка\n" + ex.Message, "Критическая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -368,6 +374,8 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            if (Value.Text.Contains("-")) Saver.Text = $"({Value.Text}) *";
+            else Saver.Text = $"{Value.Text} *";
         }
         private void Subtraction_Click(object sender, EventArgs e)
         {
@@ -379,6 +387,8 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            if (Value.Text.Contains("-")) Saver.Text = $"({Value.Text}) -";
+            else Saver.Text = $"{Value.Text} -";
         }
         private void Divide_Click(object sender, EventArgs e)
         {
@@ -390,6 +400,8 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            if (Value.Text.Contains("-")) Saver.Text = $"({Value.Text}) /";
+            else Saver.Text = $"{Value.Text} /";
         }
         private void Addition_Click(object sender, EventArgs e)
         {
@@ -401,6 +413,8 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            if (Value.Text.Contains("-")) Saver.Text = $"({Value.Text}) +";
+            else Saver.Text = $"{Value.Text} +";
         }
         private void Squart_Click(object sender, EventArgs e)
         {
@@ -412,6 +426,7 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            Saver.Text = $"√({Value.Text}) = {answer}";
         }
         private void Inverse_Click(object sender, EventArgs e)
         {
@@ -423,6 +438,7 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            Saver.Text = $"1/({Value.Text}) = {answer}";
         }
         private void Square_Click(object sender, EventArgs e)
         {
@@ -434,6 +450,8 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            if (Value.Text.Contains("-")) Saver.Text = $"({Value.Text}) ^ 2 = {answer}";
+            else Saver.Text = $"{Value.Text} ^ 2 = {answer}";
         }
         private void Pow_Click(object sender, EventArgs e)
         {
@@ -445,6 +463,8 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            if (Value.Text.Contains("-")) Saver.Text = $"({Value.Text}) ^";
+            else Saver.Text = $"{Value.Text} ^";
         }
         private void RootN_Click(object sender, EventArgs e)
         {
@@ -456,6 +476,7 @@ namespace CalculatorLite
 
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
+            Saver.Text = $"ⁿ√({Value.Text}), n =";
         }
         #endregion
     }
