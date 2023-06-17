@@ -1,4 +1,6 @@
-﻿namespace CalculatorLite
+﻿using System.Windows.Forms;
+
+namespace CalculatorLite
 {
     partial class Form1
     {

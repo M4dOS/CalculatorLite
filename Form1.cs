@@ -1,11 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CalculatorLite
@@ -18,7 +11,7 @@ namespace CalculatorLite
         double? preserve;//хранение "модификаторов"
         double? memory;//память
         double? answer;//хранение значения
-        
+
         enum State
         {
             NoState = -1,
@@ -51,67 +44,8 @@ namespace CalculatorLite
             CurrentState = State.NoState;
             CurrStatus = Status.Nothing;
             Вставить.Enabled = Clipboard.GetText() != "";
-            КопироватьПамять.Enabled = memory != null; 
+            КопироватьПамять.Enabled = memory != null;
             КопироватьПоле.Enabled = Value.Text != string.Empty;
-        }
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Enter:
-                    Equally_Click(sender, e); break;
-                case Keys.NumPad0:
-                case Keys.D0:
-                    Num0_Click(sender, e); break;
-                case Keys.NumPad1:
-                case Keys.D1:
-                    Num1_Click(sender, e); break;
-                case Keys.NumPad2:
-                case Keys.D2:
-                    Num2_Click(sender, e); break;
-                case Keys.NumPad3:
-                case Keys.D3:
-                    Num3_Click(sender, e); break;
-                case Keys.NumPad4:
-                case Keys.D4:
-                    Num4_Click(sender, e); break;
-                case Keys.NumPad5:
-                case Keys.D5:
-                    Num5_Click(sender, e); break;
-                case Keys.NumPad6:
-                case Keys.D6:
-                    Num6_Click(sender, e); break;
-                case Keys.NumPad7:
-                case Keys.D7:
-                    Num7_Click(sender, e); break;
-                case Keys.NumPad8:
-                case Keys.D8:
-                    Num8_Click(sender, e); break;
-                case Keys.NumPad9:
-                case Keys.D9:
-                    Num9_Click(sender, e); break;
-                case Keys.Add:
-                    Addition_Click(sender, e); break;
-                case Keys.Oemcomma:
-                case Keys.Decimal:
-                case Keys.OemPeriod:
-                    Comma_Click(sender, e); break;
-                case Keys.Subtract:
-                    Subtraction_Click(sender,e);break;
-                case Keys.Divide:
-                    Divide_Click(sender, e);break;
-                case Keys.Multiply:
-                    Multiplication_Click(sender, e); break;
-                case Keys.OemMinus:
-                    MemMinus_Click(sender, e);break;
-                case Keys.Oemplus:
-                    MemPlus_Click(sender, e);break;
-                /*case Keys.Back:
-                    Backspace_Click(sender, e);break;*/
-                /*case Keys.Delete:
-                    ClearAll_Click(sender, e); break;*/
-
-            }
         }
         #endregion
 
@@ -124,8 +58,8 @@ namespace CalculatorLite
                 {
                     MemoryClear.Enabled = true;
                     MemReplace.Enabled = true;
-                    
-                    if(memory != null) memory += double.Parse(Value.Text);
+
+                    if (memory != null) memory += double.Parse(Value.Text);
                     else memory = double.Parse(Value.Text);
 
                     panel1.Text = memory.ToString();
@@ -186,8 +120,9 @@ namespace CalculatorLite
         #region Циферки
         private void Num1_Click(object sender, EventArgs e)
         {
-            if(Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "1";
+            if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "1";
             else Value.Text += "1";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -195,6 +130,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "2";
             else Value.Text += "2";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -202,6 +138,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "3";
             else Value.Text += "3";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -209,6 +146,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "4";
             else Value.Text += "4";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -216,6 +154,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "5";
             else Value.Text += "5";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -223,6 +162,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "6";
             else Value.Text += "6";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -230,6 +170,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "7";
             else Value.Text += "7";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -237,6 +178,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "8";
             else Value.Text += "8";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -244,6 +186,7 @@ namespace CalculatorLite
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "9";
             else Value.Text += "9";
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -251,15 +194,19 @@ namespace CalculatorLite
         {
             if (Value.Text != "0" || CurrStatus != Status.Nothing) Value.Text = "0";
             else Value.Text += "0";
-
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
         private void Comma_Click(object sender, EventArgs e)
         {
             if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = "0,";
-            else if (Value.Text.Contains(",")) Value.Text = Value.Text.Replace(",", string.Empty);
-            Value.Text += ",";
+            else if (Value.Text.Contains(",")) { Value.Text = Value.Text.Replace(",", string.Empty); Value.Text += ","; }
+            else Value.Text += ",";
+
+            while (Value.Text[0] == '0' && Value.Text.Length>2) Value.Text = Value.Text.Substring(1);
+
+            CurrStatus = Status.Nothing;
             Value.Focus();
             Value.SelectionStart = Value.Text.Length;
         }
@@ -325,21 +272,42 @@ namespace CalculatorLite
             try
             {
                 Value.Text = Value.Text.Substring(0, Value.Text.Length - 1);
-                if(Value.Text == "") Value.Text = "0";
+                if (Value.Text == "") Value.Text = "0";
             }
             catch (Exception) { }
         }
         private void Value_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (Value.Text == "") Value.Text += "0";
             if (!(Char.IsDigit(e.KeyChar)))
             {
-                if (e.KeyChar == '.' || e.KeyChar == ',' || e.KeyChar == (char)Keys.Back)
-                {
-                    if (e.KeyChar == (char)Keys.Back) { }
-                    else if (Value.Text.Contains(",") || Value.Text.Contains(".")) e.Handled = true;
-                }
-                else e.Handled = true;
+                e.Handled = true;
+                if (e.KeyChar == '.' || e.KeyChar == ',' || e.KeyChar == (char)Keys.Back) Comma_Click(sender, e);
+                else if (e.KeyChar == '+') Addition_Click(sender, e);
+                else if (e.KeyChar == '-') Subtraction_Click(sender, e);
+                else if (e.KeyChar == '/') Divide_Click(sender, e);
+                else if (e.KeyChar == '*') Multiplication_Click(sender, e);
+                else if (e.KeyChar == '^') Pow_Click(sender, e);
+                else if (e.KeyChar == (char)Keys.Delete) ClearAll_Click(sender, e);
+                else if (e.KeyChar == (char)Keys.Enter) Equally_Click(sender, e);
             }
+            /*else if (Value.Text == "0")
+            {
+                Value.Text = e.KeyChar.ToString();
+                e.Handled = true;
+                Value.Focus();
+                Value.SelectionStart = Value.Text.Length;
+            }*/
+            else
+            {
+                if (Value.Text == "0" || CurrStatus != Status.Nothing) Value.Text = e.KeyChar.ToString();
+                else Value.Text += e.KeyChar.ToString();
+                CurrStatus = Status.Nothing;
+                Value.Focus();
+                Value.SelectionStart = Value.Text.Length;
+                e.Handled = true;
+            }
+            
         }
         #endregion
 
@@ -390,7 +358,6 @@ namespace CalculatorLite
             }
             catch (Exception ex) { MessageBox.Show("Вызвана следующая ошибка\n" + ex.Message, "Критическая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
-
         private void Multiplication_Click(object sender, EventArgs e)
         {
             if (CurrentState != State.NoState) Equally_Click(sender, e);
@@ -491,7 +458,5 @@ namespace CalculatorLite
             Value.SelectionStart = Value.Text.Length;
         }
         #endregion
-
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
     }
 }
